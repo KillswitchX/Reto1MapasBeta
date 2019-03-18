@@ -168,10 +168,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-
-                if(marker.equals(marc)){
-
-
                     String msj = "Dirección: ";
 
                     try {
@@ -190,20 +186,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     catch (Exception e) {
                         e.printStackTrace(); // getFromLocation() may sometimes fail
                     }
-                }
-                else{
-                    Location local = new Location("local");
-                    local.setLatitude(marc.getPosition().latitude);
-                    local.setLongitude(marc.getPosition().longitude);
 
-                    Location l = new Location("v:");
-                    local.setLatitude(marker.getPosition().latitude);
-                    local.setLongitude(marker.getPosition().longitude);
-
-                    String msj = "Este punto se encuentra a : " +local.distanceTo(l) +" m";
-
-                    marker.setSnippet(msj);
-                }
 
                 return false;
             }
