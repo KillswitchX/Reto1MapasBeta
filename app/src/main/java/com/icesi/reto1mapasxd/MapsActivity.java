@@ -68,7 +68,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public Marker marc;
 
-
+    /**
+     * Metodo para inicializar el layout y algunos componenetes
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -184,7 +187,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         }
                     }
                     catch (Exception e) {
-                        e.printStackTrace(); // getFromLocation() may sometimes fail
+                        e.printStackTrace();
                     }
 
 
@@ -205,7 +208,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
 
-        private void showPopup(){
+    /**
+     * Metodo que inicializa el dialogo para agregar un marcador
+     */
+    private void showPopup(){
 
             epicDialog.setContentView(R.layout.epic_popup);
             close_popup = (ImageView) epicDialog.findViewById(R.id.btn_cerrar);
@@ -234,7 +240,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
 
-        public void guardarLugar(String lugar){
+    /**
+     * Guarda el lugar(Marcador) al que se le dio click
+     * @param lugar
+     */
+    public void guardarLugar(String lugar){
             MarkerOptions nuevo = new MarkerOptions().position(newLatLng).title(lugar).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
             marcadores.add(nuevo);
             mMap.addMarker(nuevo);
@@ -247,7 +257,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
 
-        public String masCercano(){
+    /**
+     * Calcula el marcador que está más cercano a la posición actual
+     * @return
+     */
+    public String masCercano(){
             int n = marcadores.size();
             String m = "El lugar más cercano es: ";
 
@@ -302,6 +316,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
 
+    /**
+     * Método onClick del Mapa sobreescrito para mostrar un dialogo
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         showPopup();
